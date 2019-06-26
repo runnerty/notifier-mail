@@ -1,4 +1,4 @@
+#IDE
 .vscode
-api
+#
 node_modules
-samples
