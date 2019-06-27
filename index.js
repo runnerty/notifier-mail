@@ -11,15 +11,15 @@ class mailNotifier extends Notification {
   }
 
   send(notification) {
-    var _this = this;
-    var endOptions = {};
-    notification.to = (notification.to)?notification.to.toString():"";
-    notification.cc = (notification.cc)?notification.cc.toString():"";
-    notification.bcc = (notification.bcc)?notification.bcc.toString():"";
+    let _this = this;
+    let endOptions = {};
+    notification.to = notification.to ? notification.to.toString() : "";
+    notification.cc = notification.cc ? notification.cc.toString() : "";
+    notification.bcc = notification.bcc ? notification.bcc.toString() : "";
 
     function readFilePromise(type, file) {
-      return new Promise(function (resolve, reject) {
-        fs.readFile(file, function (err, data) {
+      return new Promise((resolve, reject) => {
+        fs.readFile(file, (err, data) => {
           let res = {};
           if (err) {
             res[type] = err;
@@ -43,8 +43,7 @@ class mailNotifier extends Notification {
     filesReads.push(readFilePromise("text", txtTemplate));
 
     Promise.all(filesReads)
-      .then(function (res) {
-
+      .then(res => {
         let html_data;
         let text_data;
 
@@ -59,7 +58,7 @@ class mailNotifier extends Notification {
         textData.push(_this.replaceWith(text_data, notification));
 
         Promise.all(textData)
-          .then(function (res) {
+          .then(res => {
             let [html, text] = res;
             let mailOptions = {
               from: notification.from,
@@ -76,34 +75,29 @@ class mailNotifier extends Notification {
               _this.logger("warn", "Mail sender is disable.");
               endOptions.messageLog = "Mail sender is disable.";
               _this.end(endOptions);
-
             } else {
-              transport.sendMail(mailOptions,
-                function (err, res) {
-                  if (err) {
-                    endOptions.messageLog = "Mail sender:" + JSON.stringify(err);
-                    _this.end(endOptions);
-                  } else {
-                    _this.end();
-                  }
-                });
+              transport.sendMail(mailOptions, err => {
+                if (err) {
+                  endOptions.messageLog = "Mail sender:" + JSON.stringify(err);
+                  _this.end(endOptions);
+                } else {
+                  _this.end();
+                }
+              });
             }
           })
-          .catch(function (err) {
+          .catch(err => {
             endOptions.end = "error";
             endOptions.messageLog = "Mail sender:" + JSON.stringify(err);
             _this.end(endOptions);
           });
-
       })
-      .catch(function (err) {
+      .catch(err => {
         endOptions.end = "error";
         endOptions.messageLog = "Mail sender:" + JSON.stringify(err);
         _this.end(endOptions);
       });
-
   }
-
 }
 
 module.exports = mailNotifier;

@@ -1,6 +1,7 @@
 # Mail notifier for [Runnerty]:
 
 ### Configuration sample:
+
 ```json
 {
   "id": "mail_default",
@@ -16,13 +17,13 @@
 ```
 
 ### Plan sample:
+
 ```json
 {
-  "id":"mail_default",
-  "subject":"RUNNERTY SAMPLE",
-  "message":"Chain :CHAIN_NAME Running!"
+  "id": "mail_default",
+  "subject": "RUNNERTY SAMPLE",
+  "message": "Chain :CHAIN_NAME Running!"
 }
 ```
 
-
-[Runnerty]: http://www.runnerty.io
+[runnerty]: http://www.runnerty.io
