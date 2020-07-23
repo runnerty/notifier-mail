@@ -3,13 +3,13 @@
     "browser": true,
     "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["plugin:prettier/recommended"],
   "globals": {
     "Promise": true,
     "global": true
   },
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -19,7 +19,6 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "default-case": "error",
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "double"],
     "semi": ["error", "always"]
   }
 }
