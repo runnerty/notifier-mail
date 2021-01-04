@@ -23,45 +23,53 @@ npm i @runnerty/notifier-mail
 Add in [config.json]:
 ```json
 {
-  "id": "mail_default",
-  "type": "@runnerty-notifier-mail",
-  "disable": false,
-  "from": "Runnerty <my@mail.com>",
-  "transport": "smtps://my%40mail.com:mypass@smtp.mail.com/?pool=true",
-  "templateDir": "/etc/runnerty/templates",
-  "template": "alerts",
-  "to": ["to@mail.com"],
-  "ejsRender": true
+  "notifiers": [
+    {
+      "id": "mail_default",
+      "type": "@runnerty-notifier-mail",
+      "disable": false,
+      "from": "Runnerty <my@mail.com>",
+      "transport": "smtps://my%40mail.com:mypass@smtp.mail.com/?pool=true",
+      "templateDir": "/etc/runnerty/templates",
+      "template": "alerts",
+      "to": ["to@mail.com"],
+      "ejsRender": true
+    }
+  ]
 }
 ```
 ```json
 {
-  "id": "mail_default",
-  "type": "@runnerty-notifier-mail",
-  "disable": false,
-  "from": "Runnerty <my@mail.com>",
-  "to": ["NAME <to@mail.com>"],
-  "transport": {
-    "host": "smtp.mailhost.com",
-    "port": 465,
-    "secure": true,
-    "auth": {
-      "user": "USER_SAMPLE",
-      "pass": "PASS_SAMPLE"
-    }
-  },
-  "templateDir": "templates",
-  "template": "template_one",
-  "attachments": [
+  "notifiers": [
     {
-      "filename": "runnerty.png",
-      "path": "templates/imgs/runnerty.png",
-      "cid": "cid_img_sample@runnerty.png"
+      "id": "mail_default",
+      "type": "@runnerty-notifier-mail",
+      "disable": false,
+      "from": "Runnerty <my@mail.com>",
+      "to": ["NAME <to@mail.com>"],
+      "transport": {
+        "host": "smtp.mailhost.com",
+        "port": 465,
+        "secure": true,
+        "auth": {
+          "user": "USER_SAMPLE",
+          "pass": "PASS_SAMPLE"
+        }
+      },
+      "templateDir": "templates",
+      "template": "template_one",
+      "attachments": [
+        {
+          "filename": "runnerty.png",
+          "path": "templates/imgs/runnerty.png",
+          "cid": "cid_img_sample@runnerty.png"
+        }
+      ],
+      "ejsRender": true,
+      "maxConcurrents": 2,
+      "minInterval": 25
     }
-  ],
-  "ejsRender": true,
-  "maxConcurrents": 2,
-  "minInterval": 25
+  ]
 }
 ```
 
@@ -69,9 +77,15 @@ Add in [config.json]:
 Add in [plan.json]:
 ```json
 {
-  "id": "mail_default",
-  "subject": "RUNNERTY SAMPLE",
-  "message": "Chain :CHAIN_NAME Running!"
+  "notifications": {
+    "on_fail": [
+      {
+        "id": "mail_error",
+        "subject": "ERROR - PROCESS @GV(PROCESS_ID) CHAIN @GV(CHAIN_ID)",
+        "message": "CMD:<br> @GV(PROCESS_EXEC_COMMAND_EXECUTED)<br>ERROR:<br>@GV(PROCESS_EXEC_ERR_OUTPUT)"
+      }
+    ]
+  }
 }
 ```
 
