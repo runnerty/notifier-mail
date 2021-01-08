@@ -2,7 +2,7 @@
   "notifiers": [
     {
       "id": "mail_smtp",
-      "type": "@runnerty-executor-mail",
+      "type": "@runnerty-notifier-mail",
       "disable": false,
       "from": "Runnerty Notificator <sample@runnerty.io>",
       "transport": "smtp://my%mailsender.com:pass@smtp.host.com/?pool=true",
@@ -13,7 +13,7 @@
     },
     {
       "id": "mail_aws_ses",
-      "type": "@runnerty-executor-mail",
+      "type": "@runnerty-notifier-mail",
       "disable": false,
       "from": "Runnerty <hello@runnerty.io>",
       "transport": {

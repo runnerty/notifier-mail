@@ -15,8 +15,24 @@
 Email notification module with [ejs] template support.
 
 ### Installation:
+Through NPM
+
 ```bash
 npm i @runnerty/notifier-mail
+```
+
+You can also add modules to your project with [runnerty-cli]
+
+```bash
+npx runnerty-cli add @runnerty/notifier-mail
+```
+
+This command installs the module in your project, adds example configuration in your `config.json`.
+
+If you have installed [runnerty-cli] globally you can include the module with this command:
+
+```bash
+rty add @runnerty/notifier-mail
 ```
 
 ### Configuration sample:
@@ -98,3 +114,4 @@ Add in [plan.json]:
 [config.json]: http://docs.runnerty.io/config/
 [plan.json]: http://docs.runnerty.io/plan/
 [ejs]: https://ejs.co
+[runnerty-cli]: https://www.npmjs.com/package/runnerty-cli

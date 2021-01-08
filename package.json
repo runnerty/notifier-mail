@@ -24,12 +24,12 @@
   "homepage": "https://github.com/runnerty/notifier-mail#readme",
   "dependencies": {
     "nodemailer": "6.4.17",
-    "@runnerty/module-core": "alpha"
+    "@runnerty/module-core": "3.0.1"
   },
   "devDependencies": {
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1"
   }
 }
