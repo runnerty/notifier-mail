@@ -1,8 +1,8 @@
 {
   "name": "@runnerty/notifier-mail",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Runnerty module: Mail notifier",
-  "author": "Coderty",
+  "author": "Runnerty Tech",
   "license": "MIT",
   "main": "index.js",
   "repository": {
@@ -23,12 +23,13 @@
   },
   "homepage": "https://github.com/runnerty/notifier-mail#readme",
   "dependencies": {
-    "nodemailer": "^6.4.10"
+    "nodemailer": "6.4.17",
+    "@runnerty/module-core": "3.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.5.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5"
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
   }
 }

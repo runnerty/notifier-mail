@@ -1,11 +1,11 @@
 'use strict';
 
-const Notification = global.NotificationClass;
+const Notifier = require('@runnerty/module-core').Notifier;
 const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
 
-class mailNotifier extends Notification {
+class mailNotifier extends Notifier {
   constructor(notification) {
     super(notification);
   }
