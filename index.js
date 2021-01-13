@@ -1,6 +1,7 @@
 'use strict';
 
 const Notifier = require('@runnerty/module-core').Notifier;
+const interpreter = require('@runnerty/interpreter-core');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
@@ -38,8 +39,8 @@ class mailNotifier extends Notifier {
         }
 
         let textData = [];
-        textData.push(this.recursiveObjectInterpreter(html_data, notification));
-        textData.push(this.recursiveObjectInterpreter(text_data, notification));
+        textData.push(interpreter(html_data, notification));
+        textData.push(interpreter(text_data, notification));
 
         Promise.all(textData).then(res => {
           let [html, text] = res;
