@@ -9,6 +9,13 @@
       "bcc": ["mycc@mail.com"],
       "templateDir": "./templates",
       "template": "mail-notification",
+      "attachments": [
+        {
+          "filename": "runnerty.png",
+          "path": "./templates/mail-notification/runnerty.png",
+          "cid": "cidrunnerty@runnerty.png"
+        }
+      ],
       "ejsRender": true
     },
     {
@@ -26,6 +33,40 @@
         }
       },
       "templateDir": "./templates",
+      "template": "mail-notification",
+      "attachments": [
+        {
+          "filename": "runnerty.png",
+          "path": "./templates/mail-notification/runnerty.png",
+          "cid": "cidrunnerty@runnerty.png"
+        }
+      ],
+      "ejsRender": true
+    },
+    {
+      "id": "mail_sparkpost",
+      "type": "@runnerty-executor-mail",
+      "from": "Runnerty <hello@runnerty.io>",
+      "transport": {
+        "host": "smtp.eu.sparkpostmail.com",
+        "port": 587,
+        "secure": false,
+        "tls": {
+          "ciphers": "SSLv3"
+        },
+        "auth": {
+          "user": "SMTP_Injection",
+          "pass": "sparkpost_api_key"
+        }
+      },
+      "templateDir": "./templates",
+      "attachments": [
+        {
+          "filename": "runnerty.png",
+          "path": "./templates/mail-notification/runnerty.png",
+          "cid": "cidrunnerty@runnerty.png"
+        }
+      ],
       "template": "mail-notification",
       "ejsRender": true
     }
