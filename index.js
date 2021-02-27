@@ -12,17 +12,17 @@ class mailNotifier extends Notifier {
   }
 
   send(notification) {
-    let endOptions = {};
+    const endOptions = {};
     notification.to = notification.to ? notification.to.toString() : '';
     notification.cc = notification.cc ? notification.cc.toString() : '';
     notification.bcc = notification.bcc ? notification.bcc.toString() : '';
 
-    let transport = nodemailer.createTransport(notification.transport);
-    let filesReads = [];
+    const transport = nodemailer.createTransport(notification.transport);
+    const filesReads = [];
 
-    let templateDir = path.resolve(notification.templateDir, notification.template);
-    let htmlTemplate = path.resolve(templateDir, 'html.html');
-    let txtTemplate = path.resolve(templateDir, 'text.txt');
+    const templateDir = path.resolve(notification.templateDir, notification.template);
+    const htmlTemplate = path.resolve(templateDir, 'html.html');
+    const txtTemplate = path.resolve(templateDir, 'text.txt');
 
     filesReads.push(this.readFilePromise('html', htmlTemplate));
     filesReads.push(this.readFilePromise('text', txtTemplate));
@@ -38,13 +38,13 @@ class mailNotifier extends Notifier {
           [html_data, text_data] = [res[1].html.toString(), res[0].text.toString()];
         }
 
-        let textData = [];
+        const textData = [];
         textData.push(interpreter(html_data, notification));
         textData.push(interpreter(text_data, notification));
 
         Promise.all(textData).then(res => {
-          let [html, text] = res;
-          let mailOptions = {
+          const [html, text] = res;
+          const mailOptions = {
             from: notification.from,
             to: notification.to,
             cc: notification.cc,
@@ -81,7 +81,7 @@ class mailNotifier extends Notifier {
   readFilePromise(type, file) {
     return new Promise((resolve, reject) => {
       fs.readFile(file, (err, data) => {
-        let res = {};
+        const res = {};
         if (err) {
           res[type] = err;
           reject(res);

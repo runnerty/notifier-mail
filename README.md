@@ -5,16 +5,17 @@
   <p align="center">A new way for processes managing</p>
 </p>
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency Status][david-badge]][david-badge-url] 
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency Status][david-badge]][david-badge-url]
 <a href="#badge">
-  <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg">
+<img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg">
 </a>
 
-
 # Mail notifier for [Runnerty]:
+
 Email notification module with [ejs] template support.
 
 ### Installation:
+
 Through NPM
 
 ```bash
@@ -36,7 +37,9 @@ rty add @runnerty/notifier-mail
 ```
 
 ### Configuration sample:
+
 Add in [config.json]:
+
 ```json
 {
   "notifiers": [
@@ -54,6 +57,7 @@ Add in [config.json]:
   ]
 }
 ```
+
 ```json
 {
   "notifiers": [
@@ -90,7 +94,9 @@ Add in [config.json]:
 ```
 
 ### Plan sample:
+
 Add in [plan.json]:
+
 ```json
 {
   "notifications": {
@@ -105,7 +111,7 @@ Add in [plan.json]:
 }
 ```
 
-[Runnerty]: http://www.runnerty.io
+[runnerty]: http://www.runnerty.io
 [downloads-image]: https://img.shields.io/npm/dm/@runnerty/notifier-mail.svg
 [npm-url]: https://www.npmjs.com/package/@runnerty/notifier-mail
 [npm-image]: https://img.shields.io/npm/v/@runnerty/notifier-mail.svg
