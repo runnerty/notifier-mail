@@ -2,7 +2,7 @@
   <a href="http://runnerty.io">
     <img height="257" src="https://runnerty.io/assets/header/logo-stroked.png">
   </a>
-  <p align="center">A new way for processes managing</p>
+  <p align="center">Smart Processes Management</p>
 </p>
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency Status][david-badge]][david-badge-url]
@@ -22,18 +22,18 @@ Through NPM
 npm i @runnerty/notifier-mail
 ```
 
-You can also add modules to your project with [runnerty-cli]
+You can also add modules to your project with [runnerty]
 
 ```bash
-npx runnerty-cli add @runnerty/notifier-mail
+npx runnerty add @runnerty/executor-mysql
 ```
 
-This command installs the module in your project, adds example configuration in your `config.json`.
+This command installs the module in your project, adds example configuration in your [config.json] and creates an example plan of use.
 
-If you have installed [runnerty-cli] globally you can include the module with this command:
+If you have installed [runnerty] globally you can include the module with this command:
 
 ```bash
-rty add @runnerty/notifier-mail
+runnerty add @runnerty/executor-mysql
 ```
 
 ### Configuration sample:
@@ -111,7 +111,7 @@ Add in [plan.json]:
 }
 ```
 
-[runnerty]: http://www.runnerty.io
+[runnerty]: https://www.runnerty.io
 [downloads-image]: https://img.shields.io/npm/dm/@runnerty/notifier-mail.svg
 [npm-url]: https://www.npmjs.com/package/@runnerty/notifier-mail
 [npm-image]: https://img.shields.io/npm/v/@runnerty/notifier-mail.svg
@@ -120,4 +120,3 @@ Add in [plan.json]:
 [config.json]: http://docs.runnerty.io/config/
 [plan.json]: http://docs.runnerty.io/plan/
 [ejs]: https://ejs.co
-[runnerty-cli]: https://www.npmjs.com/package/runnerty-cli
