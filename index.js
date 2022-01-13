@@ -61,7 +61,6 @@ class mailNotifier extends Notifier {
             endOptions.messageLog = 'Mail sender is disable.';
             this.end(endOptions);
           } else {
-
             // SES Transport
             if (notification.transport?.service === 'SES') {
               if (!notification.transport.region) throw new Error('Must indicate the region to use SES transport');
@@ -77,7 +76,14 @@ class mailNotifier extends Notifier {
               if (notification.transport.ses) {
                 mailOptions.ses = Object.assign(notification.transport.ses, notification.ses);
               }
-              await transport.sendMail(mailOptions);
+              transport.sendMail(mailOptions, err => {
+                if (err) {
+                  endOptions.messageLog = 'Mail sender:' + JSON.stringify(err);
+                  this.end(endOptions);
+                } else {
+                  this.end();
+                }
+              });
             } else {
               // SMTP Transport
               const transport = nodemailer.createTransport(notification.transport);
@@ -90,7 +96,6 @@ class mailNotifier extends Notifier {
                 }
               });
             }
-
           }
         });
       });
