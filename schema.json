@@ -17,7 +17,19 @@
           "type": "string"
         },
         "transport": {
-          "type": ["string", "object"]
+          "type": ["string", "object"],
+          "properties": {
+            "service": {
+              "type": "string",
+              "enum": ["SES"]
+            },
+            "region": {
+              "type": "string"
+            },
+            "ses": {
+              "type": "object"
+            }
+          }
         },
         "templateDir": {
           "type": "string"

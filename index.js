@@ -3,6 +3,8 @@
 const Notifier = require('@runnerty/module-core').Notifier;
 const interpreter = require('@runnerty/interpreter-core');
 const nodemailer = require('nodemailer');
+const aws = require('@aws-sdk/client-ses');
+const { defaultProvider } = require('@aws-sdk/credential-provider-node');
 const path = require('path');
 const fs = require('fs');
 
@@ -17,7 +19,6 @@ class mailNotifier extends Notifier {
     notification.cc = notification.cc ? notification.cc.toString() : '';
     notification.bcc = notification.bcc ? notification.bcc.toString() : '';
 
-    const transport = nodemailer.createTransport(notification.transport);
     const filesReads = [];
 
     const templateDir = path.resolve(notification.templateDir, notification.template);
@@ -60,14 +61,36 @@ class mailNotifier extends Notifier {
             endOptions.messageLog = 'Mail sender is disable.';
             this.end(endOptions);
           } else {
-            transport.sendMail(mailOptions, err => {
-              if (err) {
-                endOptions.messageLog = 'Mail sender:' + JSON.stringify(err);
-                this.end(endOptions);
-              } else {
-                this.end();
+
+            // SES Transport
+            if (notification.transport?.service === 'SES') {
+              if (!notification.transport.region) throw new Error('Must indicate the region to use SES transport');
+
+              const ses = new aws.SES({
+                apiVersion: '2010-12-01',
+                region: notification.transport.region,
+                defaultProvider
+              });
+
+              const transport = nodemailer.createTransport({ SES: { ses, aws } });
+
+              if (notification.transport.ses) {
+                mailOptions.ses = Object.assign(notification.transport.ses, notification.ses);
               }
-            });
+              await transport.sendMail(mailOptions);
+            } else {
+              // SMTP Transport
+              const transport = nodemailer.createTransport(notification.transport);
+              transport.sendMail(mailOptions, err => {
+                if (err) {
+                  endOptions.messageLog = 'Mail sender:' + JSON.stringify(err);
+                  this.end(endOptions);
+                } else {
+                  this.end();
+                }
+              });
+            }
+
           }
         });
       });

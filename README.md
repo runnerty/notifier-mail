@@ -93,6 +93,36 @@ Add in [config.json]:
 }
 ```
 
+To use AWS SES [transport]:
+
+```json
+{
+  "notifiers": [
+    {
+      "id": "mail_aws_ses_role",
+      "type": "@runnerty-notifier-mail",
+      "from": "Runnerty <hello@runnerty.io>",
+      "to": ["Support <support@mail.com>"],
+      "transport": {
+        "service": "SES",
+        "region": "us-east-1",
+        "ses": {
+          // optional extra arguments for SendRawEmail
+          "Tags": [
+            {
+              "Name": "tag_name",
+              "Value": "tag_value"
+            }
+          ]
+        }
+      },
+      "templateDir": "templates",
+      "template": "mail-notification",
+      "ejsRender": true
+    }
+  ]
+```
+
 ### Plan sample:
 
 Add in [plan.json]:
@@ -119,4 +149,5 @@ Add in [plan.json]:
 [david-badge-url]: https://david-dm.org/runnerty/notifier-mail
 [config.json]: http://docs.runnerty.io/config/
 [plan.json]: http://docs.runnerty.io/plan/
+[transport]: https://nodemailer.com/transports/ses/
 [ejs]: https://ejs.co
