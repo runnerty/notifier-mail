@@ -4,7 +4,7 @@
   "definitions": {
     "config": {
       "type": "object",
-      "required": ["id", "type", "from", "transport", "templateDir", "template"],
+      "required": ["id", "type", "transport", "templateDir", "template"],
       "properties": {
         "id": {
           "type": "string"

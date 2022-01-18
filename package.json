@@ -1,6 +1,6 @@
 {
   "name": "@runnerty/notifier-mail",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Runnerty module: Mail notifier",
   "author": "Runnerty Tech",
   "license": "MIT",
@@ -25,12 +25,12 @@
   "dependencies": {
     "@runnerty/interpreter-core": "~3.0.2",
     "@runnerty/module-core": "~3.0.7",
-    "@aws-sdk/client-ses": "^3.46.0",
-    "@aws-sdk/credential-provider-node": "^3.46.0",
+    "@aws-sdk/client-ses": "^3.47.0",
+    "@aws-sdk/credential-provider-node": "^3.47.0",
     "nodemailer": "~6.7.2"
   },
   "devDependencies": {
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1"
