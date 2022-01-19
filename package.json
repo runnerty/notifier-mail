@@ -1,6 +1,6 @@
 {
   "name": "@runnerty/notifier-mail",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Runnerty module: Mail notifier",
   "author": "Runnerty Tech",
   "license": "MIT",
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/runnerty/notifier-mail#readme",
   "dependencies": {
-    "@runnerty/interpreter-core": "~3.0.2",
-    "@runnerty/module-core": "~3.0.7",
+    "@runnerty/interpreter-core": "~3.0.3",
+    "@runnerty/module-core": "~3.0.8",
     "@aws-sdk/client-ses": "^3.47.0",
     "@aws-sdk/credential-provider-node": "^3.47.0",
     "nodemailer": "~6.7.2"
