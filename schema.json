@@ -20,8 +20,7 @@
           "type": ["string", "object"],
           "properties": {
             "service": {
-              "type": "string",
-              "enum": ["SES"]
+              "type": "string"
             },
             "region": {
               "type": "string"
